@@ -30,7 +30,8 @@ module.exports = function (app) {
     }
 
     const returnNum = convertHandler.convert(initNum, initUnit);
-    const returnUnit = convertHandler.getReturnUnit(initUnit);
+		const preReturnUnit = convertHandler.getReturnUnit(initUnit);
+    const returnUnit = preReturnUnit === 'l' ? 'L' : preReturnUnit;
 
     const string = convertHandler.getString(initNum, initUnit, returnNum, initUnit);
     res.json({ initNum, initUnit, returnNum, returnUnit, string });
